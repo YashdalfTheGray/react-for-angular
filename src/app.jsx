@@ -1,17 +1,17 @@
 import React from 'react';
 import AppBar from 'material-ui/lib/app-bar';
 
+import ForumPage from './components/forum-page';
+
 class App extends React.Component {
-    navMenuClick() {
-        console.log('Nav menu button clicked!');
-    }
 
     render() {
         return (
-            <AppBar
-                title="React Starter"
-                iconClassNameRight="muidocs-icon-navigation-expand-more"
-                onLeftIconButtonTouchTap={this.navMenuClick} />
+            <div>
+                <AppBar
+                    title="Forum" />
+                <ForumPage />
+            </div>
         );
     }
 }
