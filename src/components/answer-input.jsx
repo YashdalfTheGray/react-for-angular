@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/lib/text-field';
 import IconButton from 'material-ui/lib/icon-button';
 import SubmitIcon from 'material-ui/lib/svg-icons/content/send';
+import Snackbar from 'material-ui/lib/snackbar';
 
 import styles from '../styles';
 
@@ -11,9 +12,11 @@ export default class AnswerInput extends React.Component {
         super(props);
 
         this.state = {
-            answer: ''
+            answer: '',
+            validateSnackbarOpen: false
         };
 
+        this.handleValidateRequestClose = this.handleValidateRequestClose.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.submitAnswer = this.submitAnswer.bind(this);
     }
@@ -24,11 +27,24 @@ export default class AnswerInput extends React.Component {
         });
     }
 
-    submitAnswer() {
-        this.props.onNewAnswer(this.state.answer);
+    handleValidateRequestClose() {
         this.setState({
-            answer: ''
-        });
+            validateSnackbarOpen: false
+        })
+    }
+
+    submitAnswer() {
+        if (this.state.answer !== '') {
+            this.props.onNewAnswer(this.state.answer);
+            this.setState({
+                answer: ''
+            });
+        }
+        else {
+            this.setState({
+                validateSnackbarOpen: true
+            });
+        }
     }
 
     render() {
@@ -44,6 +60,12 @@ export default class AnswerInput extends React.Component {
                     onTouchTap={this.submitAnswer}>
                     <SubmitIcon />
                 </IconButton>
+                <Snackbar
+                    style={styles.robotoFont}
+                    open={this.state.validateSnackbarOpen}
+                    message="Cannot submit empty answer."
+                    autoHideDuration={3000}
+                    onRequestClose={this.handleValidateRequestClose} />
             </div>
         );
     }
