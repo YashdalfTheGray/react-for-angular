@@ -10,11 +10,7 @@ export default class ForumPage extends React.Component {
         super(props);
 
         this.state = {
-            answers: [
-                { text: 'Yeah...I don\'t either', isMarkedCorrect: false },
-                { text: 'Javascript framework, RTFM', isMarkedCorrect: false },
-                { text: 'Like reacting to something...or something?', isMarkedCorrect: false }
-            ]
+            answers: []
         }
 
         this.appStyle = {
