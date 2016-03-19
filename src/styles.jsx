@@ -13,5 +13,13 @@ export default {
     },
     spacerHg: {
         margin: '96px'
+    },
+    flexRow: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    flexItem: {
+        flex: '1 1 auto'
     }
 };
