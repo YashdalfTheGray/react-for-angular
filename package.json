@@ -25,6 +25,7 @@
   "homepage": "https://github.com/YashdalfTheGray/react-es6-md-starter#readme",
   "dependencies": {
     "chalk": "^1.1.1",
+    "events": "^1.1.0",
     "express": "^4.13.4",
     "lodash": "^4.6.1",
     "material-ui": "^0.15.0-alpha.1",
