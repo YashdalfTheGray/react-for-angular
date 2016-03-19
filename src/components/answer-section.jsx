@@ -23,6 +23,9 @@ export default class AnswerSection extends React.Component {
 
     render() {
         var answers = [];
+        var iconStyle = {
+            fill: Colors.green500
+        };
         if (this.props.answers.length === 0) {
             answers.push(
                 <p key={_.uniqueId('no_answer_')} style={styles.robotoFont}>
@@ -38,7 +41,7 @@ export default class AnswerSection extends React.Component {
                         key={_.uniqueId('answer_')}
                         primaryText={ans.text}
                         secondaryText="This answer is marked correct."
-                        rightIcon={<CheckIcon color={Colors.green500} />} />
+                        rightIcon={<CheckIcon style={iconStyle} />} />
                 }
                 else {
                     answerToPush = <ListItem
