@@ -3,17 +3,15 @@ import React from 'react';
 import styles from '../styles';
 import AnswerSection from './answer-section';
 import AnswerInput from './answer-input';
-import AnswersStore from '../stores/answers-store';
+import { forumDispatcher, answersStore } from '../app';
 
 export default class ForumPage extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.answersStoreInstance = new AnswersStore();
-
         this.state = {
-            answers: this.answersStoreInstance.getAnswers()
+            answers: answersStore.getAnswers()
         }
 
         this.appStyle = {
