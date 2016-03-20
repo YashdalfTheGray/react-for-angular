@@ -1,6 +1,9 @@
 import * as _ from 'lodash';
 import { EventEmitter } from 'events';
 
+import { forumDispatcher } from '../app';
+import { ACTION_NEW_ANSWER, ACTION_MARKED_CORRECT } from '../constants';
+
 export default class AnswersStore extends EventEmitter {
 
     constructor() {
@@ -17,6 +20,22 @@ export default class AnswersStore extends EventEmitter {
                 isMarkedCorrect: false,
             }
         ];
+
+        forumDispatcher.register(action => {
+            switch (action.actionType) {
+                case ACTION_NEW_ANSWER:
+                    this.addNewAnswer(action.text);
+                    this.emit(ACTION_NEW_ANSWER);
+                    break;
+                case ACTION_MARKED_CORRECT:
+                console.log('Handling ACTION_MARKED_CORRECT');
+                    this.markAnswerCorrect(action.id);
+                    this.emit(ACTION_MARKED_CORRECT);
+                    break;
+                default:
+                    console.log('No supporting handler found');
+            }
+        });
     }
 
     getAnswers() {
