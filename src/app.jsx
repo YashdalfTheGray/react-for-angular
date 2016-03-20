@@ -19,6 +19,6 @@ export default class App extends React.Component {
 }
 
 const forumDispatcher = new Dispatcher();
+export { forumDispatcher };
 const answersStore = new AnswersStore();
-
-export { forumDispatcher, answersStore };
+export { answersStore };
