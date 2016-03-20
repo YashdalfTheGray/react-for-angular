@@ -4,6 +4,7 @@ import styles from '../styles';
 import AnswerSection from './answer-section';
 import AnswerInput from './answer-input';
 import { forumDispatcher, answersStore } from '../app';
+import { ACTION_NEW_ANSWER, ACTION_MARKED_CORRECT } from '../constants';
 
 export default class ForumPage extends React.Component {
 
@@ -18,25 +19,16 @@ export default class ForumPage extends React.Component {
             margin: '16px'
         };
 
-        this.handleNewAnswer = this.handleNewAnswer.bind(this);
-    }
-
-    handleNewAnswer(newAnswer) {
-        var updatedAnswers = this.state.answers;
-        updatedAnswers.push({ text: newAnswer, isMarkedCorrect: false });
-        this.setState({
-            answers: updatedAnswers
+        answersStore.on(ACTION_NEW_ANSWER, () => {
+            this.setState({
+                answers: answersStore.getAnswers()
+            });
         });
-    }
 
-    markAnswerCorrect(ans) {
-        var updatedAnswers = this.state.answers;
-        _.forEach(updatedAnswers, (answer) => {
-            answer.isMarkedCorrect = false;
-        });
-        updatedAnswers[updatedAnswers.indexOf(ans)].isMarkedCorrect = true;
-        this.setState({
-            answers: updatedAnswers
+        answersStore.on(ACTION_MARKED_CORRECT, () => {
+            this.setState({
+                answers: answersStore.getAnswers()
+            });
         });
     }
 
@@ -46,11 +38,10 @@ export default class ForumPage extends React.Component {
                 <h2 style={styles.robotoFont}>What is React and flux?</h2>
                 <p style={styles.robotoFont}>I do not understand React or Flux. Can someone help?</p>
                 <div style={styles.spacerMd}></div>
-                <AnswerInput onNewAnswer={this.handleNewAnswer} />
+                <AnswerInput />
                 <div style={styles.spacerMd}></div>
                 <AnswerSection
-                    answers={this.state.answers}
-                    markAnswerCorrect={this.markAnswerCorrect.bind(this)} />
+                    answers={this.state.answers} />
             </div>
         );
     }
