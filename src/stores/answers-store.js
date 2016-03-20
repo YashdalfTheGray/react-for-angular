@@ -28,7 +28,6 @@ export default class AnswersStore extends EventEmitter {
                     this.emit(ACTION_NEW_ANSWER);
                     break;
                 case ACTION_MARKED_CORRECT:
-                console.log('Handling ACTION_MARKED_CORRECT');
                     this.markAnswerCorrect(action.id);
                     this.emit(ACTION_MARKED_CORRECT);
                     break;
