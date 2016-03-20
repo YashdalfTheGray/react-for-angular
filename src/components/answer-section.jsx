@@ -10,8 +10,7 @@ import CheckIcon from 'material-ui/lib/svg-icons/navigation/check';
 import * as Colors from 'material-ui/lib/styles/colors';
 
 import styles from '../styles';
-import { forumDispatcher } from '../app';
-import { ACTION_MARKED_CORRECT } from '../constants/forum-constants';
+import { markAnswerCorrect } from '../actions/forum-actions';
 
 export default class AnswerSection extends React.Component {
 
@@ -20,10 +19,7 @@ export default class AnswerSection extends React.Component {
     }
 
     handleAnswerTap(answer) {
-        forumDispatcher.dispatch({
-            actionType: ACTION_MARKED_CORRECT,
-            id: answer.id
-        });
+        markAnswerCorrect(answer.id);
     }
 
     render() {

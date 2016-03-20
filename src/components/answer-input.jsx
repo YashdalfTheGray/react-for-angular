@@ -5,8 +5,7 @@ import SubmitIcon from 'material-ui/lib/svg-icons/content/send';
 import Snackbar from 'material-ui/lib/snackbar';
 
 import styles from '../styles';
-import { forumDispatcher } from '../app';
-import { ACTION_NEW_ANSWER } from '../constants/forum-constants';
+import { addNewAnswer } from '../actions/forum-actions';
 
 export default class AnswerInput extends React.Component {
 
@@ -37,10 +36,7 @@ export default class AnswerInput extends React.Component {
 
     submitAnswer() {
         if (this.state.answer !== '') {
-            forumDispatcher.dispatch({
-                actionType: ACTION_NEW_ANSWER,
-                text: this.state.answer
-            });
+            addNewAnswer(this.state.answer);
             this.setState({
                 answer: ''
             });
