@@ -11,7 +11,7 @@ import * as Colors from 'material-ui/lib/styles/colors';
 
 import styles from '../styles';
 import { forumDispatcher } from '../app';
-import { ACTION_MARKED_CORRECT } from '../constants';
+import { ACTION_MARKED_CORRECT } from '../constants/forum-constants';
 
 export default class AnswerSection extends React.Component {
 

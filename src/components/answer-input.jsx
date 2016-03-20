@@ -6,7 +6,7 @@ import Snackbar from 'material-ui/lib/snackbar';
 
 import styles from '../styles';
 import { forumDispatcher } from '../app';
-import { ACTION_NEW_ANSWER } from '../constants';
+import { ACTION_NEW_ANSWER } from '../constants/forum-constants';
 
 export default class AnswerInput extends React.Component {
 

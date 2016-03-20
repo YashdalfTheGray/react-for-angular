@@ -4,7 +4,7 @@ import styles from '../styles';
 import AnswerSection from './answer-section';
 import AnswerInput from './answer-input';
 import { forumDispatcher, answersStore } from '../app';
-import { ACTION_NEW_ANSWER, ACTION_MARKED_CORRECT } from '../constants';
+import { ACTION_NEW_ANSWER, ACTION_MARKED_CORRECT } from '../constants/forum-constants';
 
 export default class ForumPage extends React.Component {
 

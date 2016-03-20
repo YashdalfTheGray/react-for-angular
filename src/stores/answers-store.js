@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import { EventEmitter } from 'events';
 
 import { forumDispatcher } from '../app';
-import { ACTION_NEW_ANSWER, ACTION_MARKED_CORRECT } from '../constants';
+import { ACTION_NEW_ANSWER, ACTION_MARKED_CORRECT } from '../constants/forum-constants';
 
 export default class AnswersStore extends EventEmitter {
 
